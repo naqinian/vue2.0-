@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        混入先执行，原生后执行。（有全局的情况下，全局先执行）
+     -->
+    <h1>extends Option<h3></h3></h1>
+    <hr>
+    <div id="app">
+        ${ num }
+        <button @click="add">add</button>
+    </div>
+
+
+    <script type="text/javascript">
+        var extendsObj = {
+            updated:function(){
+                console.log("扩展的updated")
+            }
+        }
+
+        // 名字相同的时候只执行构造器内的方法
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:1,
+            },
+            methods:{
+                add:function(){
+                    console.log("原生的方法。")
+                    this.num++;
+                }
+            },
+            updated:function(){
+                console.log("原生的updated")
+            },
+            // 只能有一个扩展。不能是数组
+            extends:extendsObj,
+            // 自定义符号
+            delimiters:['${','}']
+        })
+    </script>
+</body>
+</html>

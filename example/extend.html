@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 
+
+        
+
+     -->
+    <h1>vue.extend扩展实例构造器<h3>用于组件</h3></h1>
+    <hr>
+    <author></author>
+
+    <script type="text/javascript">
+        
+        var authorExtend = Vue.extend({
+            template:'<div><a :href="authorUrl">{{authorName}}</a></div>',
+            data:function(){
+                return{
+                    authorName  :   'qinian.',
+                    authorUrl   :   'https://www.supert.net.cn/'
+                }
+            }
+        });
+        //加载
+        new authorExtend().$mount('author');
+
+    </script>
+</body>
+</html>

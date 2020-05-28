@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>propsData Option</h1>
+    <hr>
+    <div id="app">
+        {{ newMess }}<br/>
+        <input type="text" v-model="mess">
+        <ul>
+            <li v-for="itme in newRever">{{ itme.title }} - {{ itme.data }}</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var newList = [
+            {title:'1',data:'2019-03-13'},
+            {title:'2',data:'2019-03-10'},
+            {title:'3',data:'2019-03-06'},
+        ]
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                mess:100,
+                newList:newList
+            },
+            // 
+            computed:{
+                newMess:function(){
+                    return this.mess = "￥" + this.mess;
+                },
+                newRever:function(){
+                    return this.newList.reverse();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

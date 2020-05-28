@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+        .span_one {
+            color: red;
+        }
+    </style>
+    <h1>v-on</h1>
+    <hr>
+    <div id="app">
+        <img :src="imgSrc" alt="" width="100px"><hr>
+        <span :class="classA">classA</span><hr/>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                imgSrc:'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2681577819,181502023&fm=26&gp=0.jpg',
+                classA:'span_one'
+            }
+        })
+    </script>
+</body>
+</html>

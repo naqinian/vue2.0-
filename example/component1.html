@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>component-1组件</h1>
+    <hr>
+    <div id="app1">
+        <qinian></qinian>
+        
+        <panda></panda>
+    </div>
+    
+
+    <script type="text/javascript">
+        // 定义全局组件  标签名（组件名） 对象（） 
+        Vue.component('qinian',{
+            template:`<div style="color:red">自定义全局组件 一</div>`
+        })
+        // 实例化
+        var app = new Vue({
+            el:'#app1',  //对应 id = app
+            components:{
+                // 组件名 对象
+                "panda":{
+                    template:`<div style="color:green">自定义局部组件 一</div>`
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

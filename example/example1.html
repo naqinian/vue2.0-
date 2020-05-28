@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>example methods demo</h1>
+    <hr>
+    <div id="app">
+       
+    </div>
+    <p><button onclick="reload()">刷新</button></p>
+    <p><button onclick="tick()">更新</button></p>
+    <p><button onclick="destroy()">卸载</button></p>
+
+    <script type="text/javascript">
+        var msg = Vue.extend({
+            template:`<p>{{message}}</p>`,
+            data:function(){
+                return {
+                    message:'aaaaaaaaaaa'
+                }
+            },
+            mounted:function(){
+                console.log("被创建")
+            },
+            destroyed:function(){
+                console.log("被卸载后")
+            },
+            updated:function(){
+                console.log("被更新后")
+            },
+
+        })
+
+        // $mount('#app') 挂载
+        var vm = new msg().$mount('#app');
+
+        // 卸载
+        function destroy(){
+            vm.$destroy();
+        }
+        // 刷新
+        function reload(){
+            vm.$forceUpdate();
+        }
+        // 更新
+        function tick(){
+            vm.message = "bbbb";
+            vm.$nextTick(function(){
+                console.log("更新完成后")
+            })
+        }
+    </script>
+</body>
+</html>

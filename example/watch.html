@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>watch Option<h3>数据监控</h3></h1>
+    <hr>
+    <div id="app">
+        <p>当前温度：{{ wendu }}</p>
+        <p>建议穿衣：{{ chuanyi }}</p>
+        <p>
+            <button @click="tianjia">添加温度</button>
+            <button @click="jianshao">减少温度</button>
+        </p>
+    </div>
+
+
+    <script type="text/javascript">
+        // 数组
+        var chuanyiarray = ["别穿了，热死你！","短袖","夹克","秋衣","羽绒服"];
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                wendu:14,
+                chuanyi:"夹克"
+            },
+            methods: {
+                // 添加温度
+                tianjia:function(){
+                    this.wendu += 5;
+                },
+                // 减少温度
+                jianshao:function(){
+                    this.wendu -= 5;
+                }
+            },
+            // 监控
+            watch: {
+                // 监控温度方法
+                wendu:function(newVal,oldVal){
+                    // 方法一
+                    // if(newVal > 40){
+                    //     this.chuanyi = "别穿了，热死你！"
+                    // }else if(newVal < 40 && newVal >= 26){
+                    //     this.chuanyi = "短袖"
+                    // }else if(newVal < 26 && newVal >= 16){
+                    //     this.chuanyi = "夹克"
+                    // }else if(newVal < 16 && newVal >= 10){
+                    //     this.chuanyi = "秋衣"
+                    // }else if(newVal < 10){
+                    //     this.chuanyi = "羽绒服"
+                    // }
+
+                    // 方法二
+                    // if(newVal > 40){
+                    //     this.chuanyi = chuanyiarray[0]
+                    // }else if(newVal < 40 && newVal >= 26){
+                    //     this.chuanyi = chuanyiarray[1]
+                    // }else if(newVal < 26 && newVal >= 16){
+                    //     this.chuanyi = chuanyiarray[2]
+                    // }else if(newVal < 16 && newVal >= 10){
+                    //     this.chuanyi = chuanyiarray[3]
+                    // }else if(newVal < 10){
+                    //     this.chuanyi = chuanyiarray[4]
+                    // }
+                }
+            },
+        })
+        // 方法三 构造器外
+        app.$watch('wendu',function(newVal,oldVal){
+            if(newVal > 40){
+                this.chuanyi = chuanyiarray[0]
+            }else if(newVal < 40 && newVal >= 26){
+                this.chuanyi = chuanyiarray[1]
+            }else if(newVal < 26 && newVal >= 16){
+                this.chuanyi = chuanyiarray[2]
+            }else if(newVal < 16 && newVal >= 10){
+                this.chuanyi = chuanyiarray[3]
+            }else if(newVal < 10){
+                this.chuanyi = chuanyiarray[4]
+            }
+        })
+    </script>
+</body>
+</html>

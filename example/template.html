@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>template模板</h1>
+    <hr>
+    <div id="app">{{ message }}</div>
+    <hr>
+    <template id="ssr">
+        <h2 style='color:green;'>template标签模板</h2>
+    </template>
+    
+    <script type="x-template" id="sr" src="">
+        <h2 style='color:green;'>script标签模板</h2>
+    </script>
+
+    <script type="text/javascript">
+        // 实例化
+        var app = new Vue({
+            el:'#app',  //对应 id = app
+            data:{      //
+                message:'hello world'
+            },
+            // 方法一  适用于内容较多
+            template:"#sr",
+            // 方法二  适用于小范围
+            // template:`
+            //     <h2 style='color:red;'>选项模板</h2>
+            // `
+            // 方法三  用script src可以引用外部模板
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>v-model</h1>
+    <hr>
+    <div id="app">
+        你好，{{ message }}<br/>
+        <h3>文本框</h3>
+        <input type="text" v-model.trim="message">
+        <!-- 
+            v-model         双向数据绑定 
+            v-model.lazy    懒加载
+            v-model.number  必须是数字
+            v-model.trim    去掉空格
+        -->
+        <hr>
+        <h3>文本域</h3>
+        {{ something }}<br>
+        <textarea cols="30" rows="4" v-model="something"></textarea>
+        <hr>
+        <h3>多选框绑定一个值</h3>
+        <input type="checkbox" id="isTrue" v-model="isTrue">
+        <label for="isTrue">{{ isTrue }}</label>
+        <hr>
+        <h3>多选框绑定数组</h3>
+        <input type="checkbox" id="aaa" value="aaa" v-model="zzz">
+        <label for="isTrue">aaa</label>
+        <input type="checkbox" id="bbb" value="bbb" v-model="zzz">
+        <label for="isTrue">bbb</label>
+        <input type="checkbox" id="ccc" value="ccc" v-model="zzz">
+        <label for="isTrue">ccc</label>
+        <p>{{ zzz }}</p>
+        <hr>
+        <h3>单选框绑定</h3>
+        <input type="radio" id="one" value="男" v-model="sex"><label for="one">男</label>
+        <input type="radio" id="two" value="女" v-model="sex"><label for="two">女</label>
+        <p>{{ sex }}</p>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'',
+                something:'',
+                isTrue:true,
+                zzz:[],
+                sex:'男'
+            }
+        })
+    </script>
+</body>
+</html>

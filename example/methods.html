@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>Methods Option</h1>
+    <hr>
+    <div id="app">
+        {{ newMess }}<br/>
+        <button @click="add(2,$event)">add</button>
+        <!-- native 调用构造器里的原生方法 -->
+        <p><abc @click.native="add(3)"></abc></p>
+    </div>
+    <button onclick="app.add(5)">外部add</button>
+
+    <script type="text/javascript">
+        var abc = {
+            template:`<button>组件add</button>`
+        }
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                newMess:1
+            },
+            components:{
+                "abc":abc
+            },
+            methods: {
+                add:function(msg,event){
+                    console.log(msg)
+                    // event点击事件
+                    if(event != undefined){
+                        console.log(event)
+                    }
+                    
+                    if(msg!=''){
+                        this.newMess += msg;
+                    }else{
+                        this.newMess++;
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>
